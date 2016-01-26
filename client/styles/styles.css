@@ -5,6 +5,11 @@ body {
     font-family: arial, sans-serif;
 }
 
+.container{
+    font-size: 22px;
+    padding: 10px;
+}
+
 #main, #chats {
     width: 500px;
     margin: auto;
@@ -83,6 +88,11 @@ form input[type=text] {
     padding: 10px;
 }
 
-b{
+.username{
+    font-weight: bold;
     margin-right: 10px;
+}
+
+.makeBold{
+    font-weight: bold;
 }
