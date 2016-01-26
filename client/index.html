@@ -16,13 +16,19 @@
   <body>
     <div id="main">
       <h1>chatterbox</h1>
-      <div class="container">
+      <form>
         <input class="name" type="text" placeholder="Enter your name">
-        <button class="set-name-btn">Set name</button>
-      </div>
+        <input type="button" value="Set name"class="set-name-btn">
+      </form>
       <div id="send">
+      <form>
         <input class="writtenText" type="text" placeholder="Enter a message">
-        <button class="submit">Send Message</button>
+        <input type="button" value="Send Message" class="submit">
+      </form>
+      <form>
+        <input class="writtenRoomName" type="text" placeholder="Enter a roomname">
+        <input type="button" value="Add roomname" class="addRoomname">
+      </form>
       </div>
       <select id="roomSelect">
       </select>
