@@ -9,8 +9,10 @@ $(document).ready(function(){
   };
 
   App.prototype.init = function(){
-    this.handleSubmit();
-    this.fetch();
+    // this.handleSubmit();
+    // this.fetch();
+
+
   };
   App.prototype.send = function(message){
     var msgObject = {
@@ -95,7 +97,6 @@ $(document).ready(function(){
     $('#chats').append(element);
     element.on('click', function(){
       window.app.addFriend(message.username);
-      console.log('clicked');
     });
   };
 
@@ -109,13 +110,23 @@ $(document).ready(function(){
     this.chosenRoom = roomname;
   };
 
-  App.prototype.handleSubmit = function(){
+  App.prototype.handleSubmit = function(event){
     var msg = {
       username: window.location.search.slice(10) || 'anonymous',
       text: $('#send .writtenText').val(),
       roomname: this.chosenRoom || 'lobby'
     };
     this.send(msg);
+    event.preventDefault();
+    $('.writtenText').val('');
+  };
+
+  App.prototype.startSpinner = function(){
+
+  };
+
+  App.prototype.stopSpinner = function(){
+
   };
 
 
@@ -123,18 +134,17 @@ $(document).ready(function(){
   var changeName = function(){
     name = $('.name').val();
     window.location.search = '?username='+name;
-    console.log(name);
   };
   window.app = new App();
-  // app.send('SUP GAR');
-  // console.log(app);
-  console.log(window.location.search);
   app.init();
   setInterval(function(){
    app.fetch(app.chosenRoom); 
   }, 1000);
 
   $('.set-name-btn').on('click', changeName);
+  $('#send').on('submit', function(event){
+    app.handleSubmit(event);
+  });
   $('#send .submit').on('click', app.handleSubmit.bind(app));
   $('.addRoomname').on('click', function(){
     app.addRoom($('.writtenRoomName').val());
